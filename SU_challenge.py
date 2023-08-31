@@ -8,11 +8,11 @@ def suPassword(chall):
             premd5[i]=ord(chall[i])<<1
         else:
             premd5[i]=ord(chall[i])>>1
-    print('premd5:',premd5)
-    
+    print ('premd5: ',premd5)
+
     md5hash = hashlib.md5()
     md5hash.update(premd5)
-    print('md5: ',md5hash.hexdigest())
+    print ('md5: ',md5hash.hexdigest())
     prepass = bytearray(md5hash.digest())
 
     challpass = bytearray(8)
@@ -29,14 +29,14 @@ def suPassword(chall):
             challpass[i]=0x3E
         else:
             challpass[i]=temp0
-    print('PASSWORD!: ',challpass)
-        
+    print ('PASSWORD!: ',challpass)
+
 
 if __name__=='__main__':
-    print('Huawei HG8245 su command challenge-password generator by adiaz_32')
-    print('Challenge: ')
-    challenge = 'B7Q3YS1E'
-    #if len(challenge)==8:
-    suPassword(challenge)
-    #else:
-    #    print 'ERROR: Challenge must have 8 chars'
+    print ('Huawei HG8245 su command challenge-password generator by adiaz_32')
+    print ('Challenge: ')
+    challenge = 'BY74YG13'#raw_input()
+    if len(challenge)==8:
+        suPassword(challenge)
+    else:
+        print ('ERROR: Challenge must have 8 chars')
